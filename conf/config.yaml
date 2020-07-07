@@ -1,0 +1,41 @@
+device: "cuda:0"
+
+task2vec:
+  # Maximum number of samples in the dataset used to estimate the Fisher
+  max_samples: 10000
+  skip_layers: 0
+
+  # Whether to put batch normalization in eval mode (true) or train mode (false) when computing the Fisher
+#  fix_batch_norm: true
+
+  classifier_opts:
+    optimizer: adam
+    epochs: 10
+    learning_rate: 0.0004
+    weight_decay: 0.0001
+
+defaults:
+  - task2vec: montecarlo
+
+dataset:
+  name: inat2018
+  task_id: 0
+  root: ~/data
+
+# Probe network to use
+model:
+  arch: resnet34
+  pretrained: true
+
+loader:
+  batch_size: 100
+  num_workers: 6
+  balanced_sampling: true
+  num_samples: 10000
+
+hydra:
+  sweep:
+    dir: ./multirun/${task2vec.method}
+    subdir: ${hydra.job.num}_${hydra.job.override_dirname}
+#    subdir: ${hydra.job.num}_${hydra.job.num}_${hydra.job.override_dirname}
+

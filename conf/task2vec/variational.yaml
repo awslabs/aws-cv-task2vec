@@ -1,0 +1,5 @@
+task2vec:
+  method: variational
+  method_opts:
+    beta: 1.0e-7
+    epochs: 2

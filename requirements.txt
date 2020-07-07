@@ -1,0 +1,12 @@
+seaborn
+scipy
+matplotlib
+omegaconf
+fastcluster
+torch
+torchvision
+numpy
+pandas
+hydra-core
+sklearn
+tqdm
