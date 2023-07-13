@@ -28,7 +28,7 @@ cd "$DATA_DIR"/inat2018|| exit 1
 FILES="train_val2018.tar.gz train2018.json.tar.gz val2018.json.tar.gz test2018.tar.gz test2018.json.tar.gz"
 for FILE in $FILES ; do
   echo "Downloading $FILE..."
-  wget https://storage.googleapis.com/inat_data_2018_us/$FILE
+  wget https://ml-inat-competition-datasets.s3.amazonaws.com/2018/$FILE
   echo "Extracting $FILE..."
 tar -xzf $FILE
 done
